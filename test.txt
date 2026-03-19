@@ -1,0 +1,10 @@
+EOF
+Hello World!
+Thats Me!
+It's SHOWTIME!
+Hurry, hurry, step right up!
+Introducin the star of our show... his name is..
+Glep)
+EOF
+@
+
