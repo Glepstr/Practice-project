@@ -74,3 +74,32 @@
 Внутри файла ссылка на служебный фаел refs/heads/main
 
 head можно указать аргументом для команд, они будут считать, что мы работаем с последним комми
+
+## Статусы файлов
+
+Есть 4 статуса: untracked, tracked, staged, modified
+
+* *untracked* - новые файлы. Гит их видит, но не отслеживает историю их обновлений
+
+* *staged* - файл становится стейджабл после команды гит адд. Файл попадает в staging area, т.е в список файлов, которые попадут в комми
+
+* *tracked* - Файлы, которые были зафиксированы с помощью `git commit`, а так же файлы, которые были добавлены в `staging area` командой `git add`. Т.е все файлы, в которых гит отслеживает изменения
+
+* *modified* - означает, что гит сравнил содержимое файла с последней сохраненной версией и нашел отличия.
+
+_Если добавить файл командой `git add` и затем изменить этот файл, то новое содержимое не будет в стейджинг состоянии. Чтобы добавить в стейджинг последнюю версию, нужно выполнить `git add` еще раз_
+
+Жизненный цикол файла:
+
+```mermaid
+  sequenceDiagram
+      participant untracked
+      participant staged+tracked
+      participant modified
+      participant tracked
+      untracked->>staged+tracked: git add
+      staged+tracked->>tracked: git commit
+      tracked->>modified: changes
+      modified->>staged: git add
+      staged+tracked->>modified: changes     
+```
